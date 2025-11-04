@@ -55,6 +55,11 @@ async def on_hello(context: TurnContext, _state: TurnState):
     await context.send_activity("Hello!")
 
 
+@AGENT_APP.message(re.compile(r"^leave$"))
+async def on_hello(context: TurnContext, _state: TurnState):
+    await context.send_activity("Leaving call now. Thank you!")
+
+
 @AGENT_APP.activity("message")
 async def on_message(context: TurnContext, _state: TurnState):
     # Add logging for all message activities

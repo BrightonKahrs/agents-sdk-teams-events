@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+  "version": "1.0.1",
+  "manifestVersion": "1.22",
+  "id": "2577219f-a729-4d0a-a8f6-9f5667247390",
+  "name": { "short": "Meeting Bot", "full": "Meeting Event Handler Bot" },
+  "developer": {
+    "name": "Meeting Bot Developer",
+    "websiteUrl": "https://example.com",
+    "privacyUrl": "https://example.com/privacy",
+    "termsOfUseUrl": "https://example.com/terms"
+  },
+  "description": {
+    "short": "A bot that handles Teams meeting events",
+    "full": "This bot can receive and respond to Teams meeting events like meeting start, end, and participant changes."
+  },
+  "icons": { "outline": "outline.png", "color": "color.png" },
+  "accentColor": "#4464ee",
+  "bots": [
+    {
+      "botId": "{YOUR_BOT_OR_SERVICE_PRINCIPAL_ID}",
+      "scopes": ["personal", "team", "groupChat"],
+      "commandLists": [
+        {
+          "commands": [
+            { "title": "join", "description": "has bot join call" },
+            { "title": "leave", "description": "makes the bot leave the call" }
+          ],
+          "scopes": ["personal"]
+        },
+        {
+          "commands": [
+            { "title": "join", "description": "has bot join call" },
+            { "title": "leave", "description": "makes the bot leave the call" }
+          ],
+          "scopes": ["team"]
+        },
+        {
+          "commands": [
+            { "title": "join", "description": "has bot join call" },
+            { "title": "leave", "description": "makes the bot leave the call" }
+          ],
+          "scopes": ["groupChat"]
+        }
+      ],
+      "isNotificationOnly": false,
+      "supportsCalling": true,
+      "supportsVideo": false,
+      "supportsFiles": false
+    }
+  ],
+  "validDomains": ["{YOUR_NGROK_DOMAIN}.ngrok.io"],
+  "webApplicationInfo": {
+    "id": "{YOUR_BOT_OR_SERVICE_PRINCIPAL_ID}",
+    "resource": "https://RscPermission"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        { "name": "OnlineMeeting.ReadBasic.Chat", "type": "Application" },
+        { "name": "ChannelMeeting.ReadBasic.Group", "type": "Application" },
+        { "name": "OnlineMeetingParticipant.Read.Chat", "type": "Application" },
+        { "name": "Calls.AccessMedia.Chat", "type": "Application" },
+        { "name": "ChatMessage.Read.Chat", "type": "Application" },
+        { "name": "ChatSettings.ReadWrite.Chat", "type": "Application" },
+        { "name": "ChatMessage.Send.Chat", "type": "Application" },
+        { "name": "OnlineMeetingActiveSpeaker.Read.Chat", "type": "Delegated" },
+        { "name": "OnlineMeetingAudioVideo.Stream.Chat", "type": "Delegated" }
+      ]
+    }
+  }
+}
